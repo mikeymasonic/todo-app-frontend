@@ -1,0 +1,45 @@
+.App {
+  text-align: center;
+}
+
+body {
+  background-color: purple;
+  /* color: rgb(238, 154, 154); */
+  color: white;
+  font-size: 30px;
+  font-family: 'Roboto Condensed';
+  
+}
+
+.todoBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 25%;
+  margin: auto;
+  margin-top: 10px;
+  /* margin: 20px; */
+  border: rgb(97, 223, 232) 7px;
+  border-style: double;
+}
+
+.button {
+  background-color: rgb(97, 223, 232);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  margin: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 16px;
+}
+
+input {
+  background-color: rgb(97, 223, 232);
+  color: white;
+  border: none;
+  font-size: 16px;
+  padding: 15px 32px;
+}
