@@ -72,7 +72,7 @@ export default class TodoApp extends Component {
                             const deletedTodos = this.state.todos.slice();
                             deletedTodos.splice(index, 1);
                             this.setState({ todos: deletedTodos });
-                        }}>Delete</button>
+                        }}><img className="deleteButton" src="../assets/images/delete.png" alt="submit" /></button>
                         
                     </p>)
                 }

@@ -4,7 +4,6 @@
 
 body {
   background-color: purple;
-  /* color: rgb(238, 154, 154); */
   color: white;
   font-size: 30px;
   font-family: 'Roboto Condensed';
@@ -18,7 +17,6 @@ body {
   width: 25%;
   margin: auto;
   margin-top: 10px;
-  /* margin: 20px; */
   border: rgb(97, 223, 232) 7px;
   border-style: double;
 }
@@ -34,6 +32,18 @@ body {
   font-weight: bold;
   display: inline-block;
   font-size: 16px;
+}
+
+.deleteButton {
+  background-color: purple;
+  width: 30px;
+}
+
+.delete {
+  background-color: purple;
+  border: none;
+  cursor: pointer;
+  margin-left: 5px;
 }
 
 input {
