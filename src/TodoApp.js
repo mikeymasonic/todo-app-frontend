@@ -5,17 +5,13 @@ import request from 'superagent';
 export default class TodoApp extends Component {
     state = { todos: [] }
     componentDidMount = async() => {
+        const user = JSON.parse(localStorage.getItem('user'));
         const todos = await request.get('https://todo-app-backend-demo.herokuapp.com/api/todos')
+            .set('Authorization', user.token);
 
         console.log(todos.body)
         this.setState({ todos: todos.body })
     }
-
-    // handleDelete = async () => {
-    //     await request.delete(`https://todo-app-backend-demo.herokuapp.com/api/todos/${this.state.id}`);
-
-    //     this.state.history.push('/');
-    // }
 
     handleClick = async () => {
         const newTodo = {
@@ -25,19 +21,24 @@ export default class TodoApp extends Component {
             complete: false,
         };
 
+        const user = JSON.parse(localStorage.getItem('user'));
+
         const newTodos = [...this.state.todos, newTodo];
 
         this.setState({ todos: newTodos });
         const data = await request.post('https://todo-app-backend-demo.herokuapp.com/api/todos', {
             task: this.state.todoInput
-        });
+        })
+            .set('Authorization', user.token);
     }
 
     handleInput = (e) => { this.setState({ todoInput: e.target.value })};
     
     render() {
+        if (localStorage.getItem('user')){
         return (
             <div className = "todoBox">
+                <h3>Hello {JSON.parse(localStorage.getItem('user')).email}</h3>
                 <AddTodo 
                 todoInput={ this.state.todoInput } 
                 handleClick={ this.handleClick } 
@@ -61,9 +62,11 @@ export default class TodoApp extends Component {
                         const matchingTodo = newTodos.find((thisTodo) => todo.id === thisTodo.id);
 
                         matchingTodo.complete = !todo.complete
+                        const user = JSON.parse(localStorage.getItem('user'));
                                  
                         this.setState({ todos: newTodos });
-                        const data = await request.put(`https://todo-app-backend-demo.herokuapp.com/api/todos/${todo.id}`, matchingTodo);
+                        const data = await request.put(`https://todo-app-backend-demo.herokuapp.com/api/todos/${todo.id}`, matchingTodo)
+                        .set('Authorization', user.token);
                     }} key={todo.id}>
                         {todo.task}
 
@@ -78,5 +81,6 @@ export default class TodoApp extends Component {
                 }
             </div>
         )
+            }
     }
 }
