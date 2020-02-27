@@ -32,13 +32,24 @@ export default class TodoApp extends Component {
             .set('Authorization', user.token);
     }
 
+    handleLogout = () => {
+        // alert('you are now logged out');
+        localStorage.clear();
+        window.location = ('/');
+    }
+
     handleInput = (e) => { this.setState({ todoInput: e.target.value })};
     
     render() {
         if (localStorage.getItem('user')){
         return (
             <div className = "todoBox">
-                <h3>Hello {JSON.parse(localStorage.getItem('user')).email}</h3>
+                <div className = "greetingAndButton">
+                <h3 className = "greeting">Hello {JSON.parse(localStorage.getItem('user')).email}</h3>
+
+                <button className = "logoutButton" onClick={this.handleLogout}>logout</button>
+                </div>
+                
                 <AddTodo 
                 todoInput={ this.state.todoInput } 
                 handleClick={ this.handleClick } 
@@ -71,7 +82,8 @@ export default class TodoApp extends Component {
                         {todo.task}
 
                         <button className="delete" onClick={async () => {
-                            await request.delete(`https://todo-app-backend-demo.herokuapp.com/api/todos/${todo.id}`)
+                            const user = JSON.parse(localStorage.getItem('user'));
+                            await request.delete(`https://todo-app-backend-demo.herokuapp.com/api/todos/${todo.id}`).set ('Authorization', user.token);
                             const deletedTodos = this.state.todos.slice();
                             deletedTodos.splice(index, 1);
                             this.setState({ todos: deletedTodos });

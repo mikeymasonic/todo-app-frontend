@@ -14,7 +14,7 @@ export default class TodoAppLogin extends Component {
             email: this.state.usernameSignIn,
             password: this.state.passwordSignIn,
         })
-        alert('you are now logged in');
+        // alert('you are now logged in');
         localStorage.setItem('user', JSON.stringify(signIn.body));
         this.props.history.push('/');
     }
@@ -24,23 +24,23 @@ export default class TodoAppLogin extends Component {
             email: this.state.usernameSignUp,
             password: this.state.passwordSignUp,
         })
-        alert('you are now signed up, please login below');
+        // alert('you are now signed up, please login below');
         localStorage.setItem('user', JSON.stringify(signUp.body));
         this.props.history.push('/');
     }
 
     render() {
         return (
-            <div>
-                <input value={ this.state.usernameSignUp} onChange={(e) => this.setState({ usernameSignUp: e.target.value})} />
+            <div className = "signInSignUp">
+                <input className = "signUpEmail" input type ="email" value={ this.state.usernameSignUp} onChange={(e) => this.setState({ usernameSignUp: e.target.value})} />
                 <input input type="password" value={ this.state.passwordSignUp} onChange={(e) => this.setState({ passwordSignUp: e.target.value})} />
 
-                <button onClick={ this.handleSignUp }>Sign up</button>  
+                <button className = "button" onClick={ this.handleSignUp }>Sign up</button>  
                 <br/>
-                <input value={ this.state.usernameSignIn} onChange={(e) => this.setState({ usernameSignIn: e.target.value})} />
+                <input className = "signUpEmail" input type ="email" value={ this.state.usernameSignIn} onChange={(e) => this.setState({ usernameSignIn: e.target.value})} />
                 <input input type="password" value={ this.state.passwordSignIn} onChange={(e) => this.setState({ passwordSignIn: e.target.value})} />
 
-                <button onClick={this.handleSignIn}>Sign in</button>     
+                <button className = "button" onClick={this.handleSignIn}>Sign in</button>     
    
                 </div>
         )

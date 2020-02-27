@@ -32,6 +32,36 @@ body {
   font-weight: bold;
   display: inline-block;
   font-size: 16px;
+  /* height: 25%; */
+}
+
+.logoutButton {
+  background-color: rgb(97, 223, 232);
+  border: none;
+  color: white;
+  width: 25%;
+  /* padding: 15px 32px; */
+  margin: auto;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.greeting {
+  /* background-color: rgb(97, 223, 232); */
+  border: none;
+  color: white;
+  /* padding: 15px 32px; */
+  margin-bottom: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 16px;
 }
 
 .deleteButton {
@@ -52,4 +82,18 @@ input {
   border: none;
   font-size: 16px;
   padding: 15px 32px;
+}
+
+.signInSignUp {
+  margin: 10px;
+}
+
+.signUpEmail {
+  margin: 20px;
+  /* padding: 10px 32px; */
+}
+
+.signInEmail {
+  margin: 20px;
+  /* padding: 10px 32px; */
 }
